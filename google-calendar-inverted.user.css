@@ -1,0 +1,18 @@
+/* ==UserStyle==
+@name           Google Calendar Inverted
+@namespace      github.com/ibillingsley
+@version        1.0.0
+@description    Dark theme for Google Calendar using inverted filter
+@author         Isaiah Billingsley
+@license        0BSD
+==/UserStyle== */
+
+@-moz-document domain("calendar.google.com") {
+  html {
+    filter: invert(90%) hue-rotate(180deg);
+    background: rgb(25, 25, 25);
+  }
+  img {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+}

@@ -1,0 +1,14 @@
+/* ==UserStyle==
+@name           Netflix Selectable Text
+@namespace      github.com/ibillingsley
+@version        1.0.0
+@description    Enables text selection on netflix.com
+@author         Isaiah Billingsley
+@license        0BSD
+==/UserStyle== */
+
+@-moz-document domain("netflix.com") {
+  * {
+    user-select: text !important;
+  }
+}

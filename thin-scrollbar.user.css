@@ -1,0 +1,36 @@
+/* ==UserStyle==
+@name           Thin Scrollbar
+@namespace      github.com/ibillingsley
+@version        1.0.0
+@description    Simple thin scrollbars
+@author         Isaiah Billingsley
+@license        0BSD
+==/UserStyle== */
+
+/* Firefox */
+* {
+  scrollbar-color: rgba(249, 249, 250, 0.4) rgba(20, 20, 25, 0.3);
+  scrollbar-width: thin;
+}
+
+/* Chrome */
+::-webkit-scrollbar {
+  width: 7px !important;
+  height: 7px !important;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(249, 249, 250, 0.4) !important;
+  border-radius: 0px !important;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(20, 20, 25, 0.3) !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 249, 250, 0.6) !important;
+}
+::-webkit-scrollbar-thumb:active {
+  background: rgba(249, 249, 250, 0.8) !important;
+}
+::-webkit-scrollbar-corner {
+  background: rgba(20, 20, 25, 0.3) !important;
+}
