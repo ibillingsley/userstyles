@@ -1,39 +1,38 @@
 /* ==UserStyle==
 @name           YouTube Full Theater
 @namespace      github.com/ibillingsley
-@version        1.0.0
+@version        1.0.1
 @description    Full screen theatre mode for YouTube
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
 @license        0BSD
 ==/UserStyle== */
 
-@-moz-document domain("youtube.com") {
+@-moz-document url-prefix("https://www.youtube.com/watch") {
   /* Full height player */
-  ytd-app[is-watch-page] ytd-watch[theater] #player,
-  ytd-app[is-watch-page] ytd-watch-flexy[theater] #player-theater-container {
+  ytd-watch-flexy[theater] #player-theater-container {
     max-height: 100vh !important;
     min-height: 100vh !important;
   }
   /* Hide top bar */
-  ytd-app[is-watch-page] #masthead-container {
+  #masthead-container {
     opacity: 0 !important;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.1s ease-in-out !important;
   }
   /* Show on hover */
-  ytd-app[is-watch-page] #masthead-container:hover {
+  #masthead-container:hover {
     opacity: 1 !important;
   }
   /* Remove top margin */
-  ytd-app[is-watch-page] #page-manager {
+  #page-manager {
     margin-top: 0 !important;
   }
   /* Hide feedback and restore classic buttons */
-  ytd-app[is-watch-page] #extra-buttons {
+  #extra-buttons {
     display: none !important;
   }
   /* Fix toast interfering with controls */
-  ytd-app[is-watch-page] #toast:not(.paper-toast-open) {
+  #toast:not(.paper-toast-open) {
     pointer-events: none;
   }
 }
