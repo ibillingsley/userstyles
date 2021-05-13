@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.0.1
+@version        1.0.2
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -124,8 +124,9 @@
   .link .score.dislikes {
     color: #7070c2 !important;
   }
-  .expando-button {
-    filter: brightness(45%) contrast(180%);
+  .expando-button,
+  .thumbnail:empty {
+    filter: brightness(48%) contrast(200%);
     background-color: transparent !important;
   }
   .moderator,
