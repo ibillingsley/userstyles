@@ -1,5 +1,9 @@
 # UserCSS Styles
 
+- ### [Discord Bigger Inbox](https://raw.githubusercontent.com/ibillingsley/userstyles/master/discord-bigger-inbox.user.css)
+
+  Maximize inbox popup on Discord
+
 - ### [Google Calendar Inverted](https://raw.githubusercontent.com/ibillingsley/userstyles/master/google-calendar-inverted.user.css)
 
   Dark theme for Google Calendar using inverted filter
