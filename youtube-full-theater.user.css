@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           YouTube Full Theater
 @namespace      github.com/ibillingsley
-@version        1.0.1
+@version        1.0.2
 @description    Full screen theatre mode for YouTube
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -26,13 +26,5 @@
   /* Remove top margin */
   #page-manager {
     margin-top: 0 !important;
-  }
-  /* Hide feedback and restore classic buttons */
-  #extra-buttons {
-    display: none !important;
-  }
-  /* Fix toast interfering with controls */
-  #toast:not(.paper-toast-open) {
-    pointer-events: none;
   }
 }
