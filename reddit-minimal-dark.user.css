@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.0.2
+@version        1.1.0
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -41,9 +41,9 @@
   *,
   *:before,
   *:after {
-    background-color: transparent !important;
-    border: none !important;
-    color: #777 !important;
+    background-color: transparent;
+    border-color: #333;
+    color: #888;
   }
   /* Default links */
   a {
@@ -62,9 +62,19 @@
     background-color: #222 !important;
   }
   /* Top bar */
+  #header {
+    background-color: #222 !important;
+    background-blend-mode: soft-light;
+    border: none;
+  }
+  #header * {
+    background-color: transparent;
+    border: none;
+  }
   #header-img,
   #mail,
-  .sidebox.create .spacer a {
+  .sidebox.create .spacer a,
+  .users-online:before {
     filter: invert(80%) hue-rotate(180deg) !important;
   }
   .drop-choices,
@@ -75,7 +85,18 @@
   .tabmenu .selected a {
     color: #999 !important;
   }
+  .dropdown .selected {
+    color: #48b !important;
+  }
   /* Side bar */
+  .side,
+  .side *,
+  .listing-chooser,
+  .listing-chooser * {
+    background-color: transparent !important;
+    border-color: #333 !important;
+    color: #777;
+  }
   .listing-chooser-collapsed .grippy {
     width: 1px !important;
   }
@@ -88,22 +109,28 @@
   .grippy:after {
     display: none !important;
   }
+  /* Footer */
+  .footer,
+  .footer * {
+    border-color: #333 !important;
+  }
   /* Inputs and buttons */
   input,
   textarea,
   .linkinfo .shortlink input,
-  .new-comment .usertext-body,
   .morelink a,
   .morelink:hover a,
+  .nav-buttons a,
   .fancy-toggle-button a,
   .usertext button {
     background: #333 !important;
+    border-color: #555;
     color: #999 !important;
     font-weight: normal !important;
   }
   /* Listing */
   .thing .title {
-    color: #aaa !important;
+    color: #bbb !important;
   }
   .title:visited {
     color: #777 !important;
@@ -117,6 +144,10 @@
   .arrow.upmod,
   .arrow.downmod {
     filter: brightness(50%) contrast(120%);
+  }
+  .rank,
+  .score {
+    color: #777 !important;
   }
   .link .score.likes {
     color: #b3684d !important;
@@ -152,7 +183,7 @@
     color: #666 !important;
   }
   .buttons a:hover {
-    color: #aaa !important;
+    color: #bbb !important;
   }
   .pagename,
   .tabmenu li,
@@ -165,16 +196,46 @@
   .comment-fade {
     display: none !important;
   }
-  .recommended-link {
+  .recommended-link,
+  .last-clicked,
+  .menuarea,
+  .searchpane {
     border-color: #333 !important;
   }
+  .linklisting *,
+  .searchpane {
+    background-color: transparent;
+  }
+  .flair,
+  .flairrichtext,
+  .linkflairlabel {
+    background-color: transparent !important;
+    border-color: #888;
+    border-style: inset outset outset inset;
+    color: #777;
+  }
   /* Comments */
+  .panestack-title,
+  .child {
+    border-color: #333 !important;
+  }
   .link .usertext .md,
   blockquote,
   pre,
-  code,
-  .gold-accent {
-    background-color: #111 !important;
+  code {
+    background-color: #181818 !important;
+    border: none !important;
+  }
+  .gold-accent,
+  .title-button.gold {
+    background-color: transparent !important;
+    border-color: #542 !important;
+  }
+  .md,
+  .usertext.grayed .usertext-body {
+    background-color: transparent !important;
+    color: #888;
+    border-color: #333 !important;
   }
   .md blockquote {
     border-left: solid 4px #333 !important;
@@ -183,6 +244,7 @@
     border: solid 1px #333 !important;
   }
   hr {
+    background-color: transparent !important;
     border-bottom: solid 1px #333 !important;
   }
   .comment .author,
@@ -192,68 +254,11 @@
   .comment.collapsed a.expand:after {
     color: transparent !important;
   }
-  /* RES */
-  .guider,
-  .guiders_button,
-  .res-fancy-toggle-button,
-  #RESConsoleContainer,
-  #RESShortcutsAddFormContainer {
-    background: #222 !important;
-  }
-  .RESDialogSmall,
-  .RESDropdownOptions,
-  .RESNotification,
-  #alert_message {
-    background: #111 !important;
-  }
-  .RES-keyNav-activeElement,
-  .RES-keyNav-activeElement .md-container {
-    background: #333 !important;
-  }
-  .res-nightmode .arrow {
-    filter: none !important;
-  }
-  /* new.reddit.com */
-  #header,
-  #lightbox,
-  #hamburgers,
-  #overlayScrollContainer,
-  #SHORTCUT_FOCUSABLE_DIV > div:first-child,
-  header,
-  div[data-redditstyle],
-  body > div,
-  div[style^="left:"] div[role="button"] {
-    background-color: #222 !important;
-  }
-  #header {
-    background-blend-mode: soft-light;
-  }
-  #header svg {
-    filter: invert(90%) hue-rotate(180deg);
-  }
-  div[contenteditable="true"] {
-    background: #333 !important;
-  }
-  #overlayFixedContent + div {
-    background: rgba(0, 0, 0, 0.7) !important;
-  }
-  div[data-slot] {
-    display: none !important;
-  }
-  .icon,
-  .icon:before {
-    color: inherit !important;
-  }
-  a[data-click-id="timestamp"] {
-    color: #777 !important;
-  }
-  a[data-click-id="body"] h2 {
-    color: #aaa !important;
-  }
-  a[data-click-id="body"]:visited h2 {
-    color: #777 !important;
-  }
-  .scrollerItem {
-    box-shadow: none !important;
+  .new-comment .usertext-body,
+  .usertext.border .usertext-body,
+  .message.new > .entry,
+  .infobar {
+    background-color: #2a2a2a;
+    border: none;
   }
 }
