@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.1.0
+@version        1.1.3
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -31,6 +31,7 @@
   /* Hide subreddits top bar */
   /*[[sr-top-bar]]*/
   /* Hide annoying stuff */
+  .redesign-beta-optin,
   .give-gold-button,
   .goldvertisement,
   .embed-comment,
@@ -38,14 +39,15 @@
     display: none !important;
   }
   /* Reset */
-  *,
-  *:before,
-  *:after {
+  * {
     background-color: transparent;
     border-color: #333;
     color: #888;
   }
-  /* Default links */
+  html,
+  body {
+    background-color: #222 !important;
+  }
   a {
     color: #48b !important;
   }
@@ -55,20 +57,15 @@
   a:hover {
     color: #5ad !important;
   }
-  /* Background */
-  html,
-  body,
-  #sr-more-link {
-    background-color: #222 !important;
-  }
   /* Top bar */
-  #header {
-    background-color: #222 !important;
-    background-blend-mode: soft-light;
-    border: none;
-  }
   #header * {
     background-color: transparent;
+    border: none;
+  }
+  #header,
+  #sr-more-link {
+    background-color: #222 !important;
+    background-blend-mode: soft-light;
     border: none;
   }
   #header-img,
@@ -77,16 +74,13 @@
   .users-online:before {
     filter: invert(80%) hue-rotate(180deg) !important;
   }
-  .drop-choices,
-  .hover-bubble,
-  .modal-dialog {
-    background: #111 !important;
+  .tabmenu a {
+    background-color: transparent !important;
+    border-color: #333 !important;
   }
   .tabmenu .selected a {
+    background-color: #2a2a2a !important;
     color: #999 !important;
-  }
-  .dropdown .selected {
-    color: #48b !important;
   }
   /* Side bar */
   .side,
@@ -122,11 +116,36 @@
   .morelink:hover a,
   .nav-buttons a,
   .fancy-toggle-button a,
-  .usertext button {
+  .usertext button,
+  .image-upload-drop-target {
     background: #333 !important;
     border-color: #555;
     color: #999 !important;
     font-weight: normal !important;
+  }
+  button {
+    border-width: 1px;
+  }
+  .drop-choices,
+  .hover-bubble,
+  .modal-dialog {
+    background: #111 !important;
+  }
+  .dropdown .selected {
+    color: #888 !important;
+  }
+  .drop-choices a:hover {
+    background: #333 !important;
+  }
+  .hover-bubble:after {
+    filter: invert(1);
+  }
+  .roundfield,
+  .linefield {
+    background-color: #181818 !important;
+  }
+  .formtabs-content {
+    border-color: #2a2a2a;
   }
   /* Listing */
   .thing .title {
@@ -157,7 +176,7 @@
   }
   .expando-button,
   .thumbnail:empty {
-    filter: brightness(48%) contrast(200%);
+    filter: brightness(50%) contrast(250%);
     background-color: transparent !important;
   }
   .moderator,
@@ -166,7 +185,7 @@
   }
   .admin,
   .nsfw-stamp * {
-    color: #a66 !important;
+    color: #c44 !important;
   }
   .pagename a,
   .trophy-name {
@@ -202,8 +221,8 @@
   .searchpane {
     border-color: #333 !important;
   }
-  .linklisting *,
-  .searchpane {
+  .searchpane,
+  .reddit-infobar {
     background-color: transparent;
   }
   .flair,
@@ -212,19 +231,24 @@
     background-color: transparent !important;
     border-color: #888;
     border-style: inset outset outset inset;
-    color: #777;
+    color: #888;
   }
   /* Comments */
   .panestack-title,
   .child {
     border-color: #333 !important;
   }
+  .pinnable-content.pinned,
   .link .usertext .md,
   blockquote,
   pre,
   code {
-    background-color: #181818 !important;
+    background-color: #191919 !important;
     border: none !important;
+  }
+  .link .usertext .md pre,
+  .link .usertext .md code {
+    background-color: #000 !important;
   }
   .gold-accent,
   .title-button.gold {
@@ -240,7 +264,11 @@
   .md blockquote {
     border-left: solid 4px #333 !important;
   }
-  .md td {
+  .md blockquote * {
+    color: #777;
+  }
+  .md td,
+  .md th {
     border: solid 1px #333 !important;
   }
   hr {
