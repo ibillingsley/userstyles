@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.1.3
+@version        1.1.4
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -273,7 +273,8 @@
   }
   hr {
     background-color: transparent !important;
-    border-bottom: solid 1px #333 !important;
+    border: solid #333 !important;
+    border-width: 0 0 1px 0 !important;
   }
   .comment .author,
   .morecomments a {
@@ -285,6 +286,7 @@
   .new-comment .usertext-body,
   .usertext.border .usertext-body,
   .message.new > .entry,
+  .crosspost-preview,
   .infobar {
     background-color: #2a2a2a;
     border: none;
