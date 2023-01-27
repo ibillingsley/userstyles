@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.1.4
+@version        1.1.5
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -179,13 +179,27 @@
     filter: brightness(50%) contrast(250%);
     background-color: transparent !important;
   }
+  .friend,
+  .friend:visited {
+    color: #c83 !important;
+  }
+  .submitter,
+  .submitter:visited {
+    color: #5cd !important;
+  }
   .moderator,
+  .moderator:visited,
   .green {
     color: #3a3 !important;
   }
   .admin,
+  .admin:visited,
   .nsfw-stamp * {
     color: #c44 !important;
+
+  }
+  .nsfw-stamp {
+    border-color: #822 !important;
   }
   .pagename a,
   .trophy-name {
@@ -235,9 +249,11 @@
   }
   /* Comments */
   .panestack-title,
-  .child {
+  .child,
+  .author-tooltip {
     border-color: #333 !important;
   }
+  .author-tooltip__head,
   .pinnable-content.pinned,
   .link .usertext .md,
   blockquote,
