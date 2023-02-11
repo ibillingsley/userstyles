@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.1.6
+@version        1.1.7
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -254,6 +254,7 @@
   }
   .author-tooltip__head,
   .pinnable-content.pinned,
+  .crosspost-preview-content,
   .link .usertext .md,
   .expando-gate,
   .form-bar,
