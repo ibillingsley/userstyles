@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.1.7
+@version        1.1.8
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -185,7 +185,7 @@
   }
   .submitter,
   .submitter:visited {
-    color: #5cd !important;
+    color: #3ab !important;
   }
   .moderator,
   .moderator:visited,
@@ -307,7 +307,7 @@
   .message.new > .entry,
   .crosspost-preview,
   .infobar {
-    background-color: #2a2a2a;
+    background-color: #282828;
     border: none;
   }
 }
