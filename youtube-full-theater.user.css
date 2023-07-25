@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           YouTube Full Theater
 @namespace      github.com/ibillingsley
-@version        1.0.2
+@version        1.0.3
 @description    Full screen theatre mode for YouTube
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -10,6 +10,7 @@
 
 @-moz-document url-prefix("https://www.youtube.com/watch") {
   /* Full height player */
+  ytd-watch-flexy[theater] #player-wide-container,
   ytd-watch-flexy[theater] #player-theater-container {
     max-height: 100vh !important;
     min-height: 100vh !important;
