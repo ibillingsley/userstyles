@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.1.14
+@version        1.2.0
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -30,10 +30,14 @@
 @-moz-document domain("reddit.com") {
   /* Hide subreddits top bar */
   /*[[sr-top-bar]]*/
-  /* Hide annoying stuff */
+  /* Hide ads & annoyances */
+  #redesign-beta-optin-btn,
   .redesign-beta-optin,
   .give-gold-button,
   .goldvertisement,
+  .premium-banner-outer,
+  .premium-banner,
+  .promotedlink,
   .embed-comment,
   .nub {
     display: none !important;
