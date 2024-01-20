@@ -9,20 +9,27 @@
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.youtube.com/watch") {
-  /* Full height player */
+
+  /* Player occupies full screen height */
   .ytd-page-manager[theater]:not([fullscreen]) #player-wide-container,
   .ytd-page-manager[theater]:not([fullscreen]) #player-theater-container,
   .ytd-page-manager[theater]:not([fullscreen]) #full-bleed-container {
     max-height: 100vh;
     min-height: 100vh;
   }
-  /* Hide top bar */
+
+  /* Hide top bar in theater mode */
   #masthead[fullscreen],
   #masthead[theater] {
+    /* Collapse #masthead-container */
     position: fixed;
   }
+
+  /* Theater mode top bar is hidden by default */
   #masthead[theater]:not([fullscreen]) {
+    /* Hide top bar */
     opacity: 0;
+    /* Fade in-out */
     transition: opacity 0.1s ease-in-out;
   }
   /* Show top bar on hover and when search is focused */
@@ -37,10 +44,12 @@
   }
 
 
-  /* Remove top margin */
+  /* Replace player top margin with #masthead-container */
   #masthead-container.ytd-app {
+    /* Occupy the necessary space for #masthead in default mode */
     position: sticky;
   }
+  /* Remove top margin */
   #page-manager.ytd-app {
     margin-top: 0;
   }
