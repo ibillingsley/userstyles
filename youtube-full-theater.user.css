@@ -33,4 +33,12 @@
   #page-manager.ytd-app {
     margin-top: 0;
   }
+
+
+  /* Search suggestions popup was off-screen */
+  .gstl_50.sbdd_a {
+    /* Fix miscalculated position when scrolled down */
+    top: 52px !important;
+  }
+
 }
