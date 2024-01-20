@@ -59,6 +59,8 @@
   #masthead #background {
     /* Smooth out weird transparency jump when scrolled to top */
     transition: opacity 0.7s ease-out;
+    /* Blur the top bar's bottom edge */
+    box-shadow: 0px -6px 8px 8px var(--yt-spec-base-background);
   }
 
 
