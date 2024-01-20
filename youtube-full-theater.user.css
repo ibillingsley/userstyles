@@ -62,6 +62,14 @@
     /* Blur the top bar's bottom edge */
     box-shadow: 0px -6px 8px 8px var(--yt-spec-base-background);
   }
+  /* Add a little transparency to the top bar background when visible */
+  #masthead #background:not([style="opacity: 0;"]) {
+    opacity: 50% !important;
+  }
+  /* Add transparency to the searchbox background when not focused */
+  #container.ytd-searchbox:not(:focus-within) {
+    opacity: 30%;
+  }
 
 
   /* Replace player top margin with #masthead-container */
