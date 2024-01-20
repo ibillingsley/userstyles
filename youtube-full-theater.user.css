@@ -10,22 +10,33 @@
 
 @-moz-document url-prefix("https://www.youtube.com/watch") {
   /* Full height player */
-  ytd-watch-flexy.ytd-page-manager[theater] #player-wide-container,
-  ytd-watch-flexy.ytd-page-manager[theater] #player-theater-container,
-  ytd-watch-flexy.ytd-page-manager[theater] #full-bleed-container {
+  .ytd-page-manager[theater]:not([fullscreen]) #player-wide-container,
+  .ytd-page-manager[theater]:not([fullscreen]) #player-theater-container,
+  .ytd-page-manager[theater]:not([fullscreen]) #full-bleed-container {
     max-height: 100vh;
     min-height: 100vh;
   }
   /* Hide top bar */
+  #masthead[fullscreen],
   #masthead[theater] {
     height: 0;
+  }
+  #masthead[theater]:not([fullscreen]) {
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
   }
   /* Show on hover */
-  #masthead[theater]:hover {
+  #masthead[theater]:not([fullscreen]):hover {
     opacity: 1;
   }
+
+  /* Fullscreen top bar slides out */
+  ytd-app[masthead-hidden] #masthead-container.ytd-app {
+    /* Fix miscalculated height for animation */
+    transform: translateY(-61px); /* masthead is 56px, extra 5px */
+  }
+
+
   /* Remove top margin */
   #masthead-container.ytd-app {
     position: sticky;
