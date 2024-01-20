@@ -46,6 +46,18 @@
   }
 
 
+  /* Move buttons in top-right corner below the top bar in theater mode */
+  .ytd-page-manager[theater]:not([fullscreen]) .ytp-overflow-panel-close,
+  .ytd-page-manager[theater]:not([fullscreen]) .ytp-chrome-top {
+    padding-top: 50px; /* masthead is 56px, buttons have 6px padding */
+    height: unset;
+  }
+  /* Move endscreen video grid below the title */
+  .ytd-page-manager[theater]:not([fullscreen]) .ytp-endscreen-content {
+    top: calc(50% + 50px);
+  }
+
+
   /* Search suggestions popup was off-screen */
   .gstl_50.sbdd_a {
     /* Fix miscalculated position when scrolled down */
