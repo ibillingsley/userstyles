@@ -18,31 +18,43 @@
     min-height: 100vh;
   }
 
-  /* Hide top bar in theater mode */
+
+  /* Top bar hiding with fade-out and visibility */
   #masthead[fullscreen],
   #masthead[theater] {
+    --duration--fade-out: 0.7s;
+    /* Fade in-out and enable/disable visibility (clickable). */
+    transition:
+      opacity var(--duration--fade-out) ease-out,
+      visibility var(--duration--fade-out);
     /* Collapse #masthead-container */
     position: fixed;
   }
 
   /* Theater mode top bar is hidden by default */
   #masthead[theater]:not([fullscreen]) {
-    /* Hide top bar */
     opacity: 0;
-    /* Fade in-out */
-    transition: opacity 0.7s ease-out;
   }
   /* Show top bar on hover and when search is focused */
   #masthead[theater]:not([fullscreen]):is(:focus-within, :hover) {
     opacity: 1;
     /* Fade in faster */
-    transition-duration: 0.1s;
+    transition-duration: 0.1s, 0.1s;
   }
 
-  /* Fullscreen top bar slides out */
+  /* Fullscreen top bar is hidden when scrolled to top and not focused */
+  ytd-app[masthead-hidden] #masthead[fullscreen]:not(:focus-within) {
+    /* Fade out */
+    opacity: 0;
+    /* Make top bar unclickable. Delayed until after fade out is finished. */
+    visibility: hidden;
+  }
+  /* Fullscreen top bar fades out instead of sliding off-screen */
   ytd-app[masthead-hidden] #masthead-container.ytd-app {
-    /* Fix miscalculated height for animation */
-    transform: translateY(-61px); /* masthead is 56px, extra 5px */
+    /* Disable sliding off-screen */
+    transform: unset;
+    opacity: unset;
+    transition: unset;
   }
 
 
