@@ -55,6 +55,12 @@
     transition: unset;
   }
 
+  /* Top bar background */
+  #masthead #background {
+    /* Smooth out weird transparency jump when scrolled to top */
+    transition: opacity 0.7s ease-out;
+  }
+
 
   /* Replace player top margin with #masthead-container */
   #masthead-container.ytd-app {
