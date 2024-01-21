@@ -30,11 +30,13 @@
     /* Hide top bar */
     opacity: 0;
     /* Fade in-out */
-    transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.7s ease-out;
   }
   /* Show top bar on hover and when search is focused */
   #masthead[theater]:not([fullscreen]):is(:focus-within, :hover) {
     opacity: 1;
+    /* Fade in faster */
+    transition-duration: 0.1s;
   }
 
   /* Fullscreen top bar slides out */
