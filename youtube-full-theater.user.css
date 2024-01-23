@@ -27,8 +27,6 @@
     transition:
       opacity var(--duration--fade-out) ease-out,
       visibility var(--duration--fade-out);
-    /* Collapse #masthead-container */
-    position: fixed;
   }
 
   /* Theater mode top bar is hidden by default */
@@ -62,6 +60,11 @@
   #masthead-container.ytd-app {
     /* Occupy the necessary space for #masthead in default mode */
     position: sticky;
+  }
+  /* Collapse #masthead-container in fullscreen and theater mode: there's no space above player */
+  #masthead[fullscreen],
+  #masthead[theater] {
+    position: fixed;
   }
   /* Remove top margin */
   #page-manager.ytd-app {
