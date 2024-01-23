@@ -106,4 +106,154 @@
     top: 52px !important;
   }
 
+
+  /** Show video title and buttons in theater mode, hide when playing video - also in fullscreen **/
+
+  /* Video title gradient shadow is only as high as the title instead of darkening the top 1/3 of the video */
+  .ytp-chrome-top {
+    /* background-image: linear-gradient(to top, rgb(0 0 0 / 0%), rgb(0 0 0 / 40%) 40px, rgb(0 0 0 / 70%) 100%); */
+    /* background-image: linear-gradient(to top, rgb(0 0 0 / 0%), rgb(0 0 0 / 25%) 40px, rgb(0 0 0 / 50%) 100%); */
+    padding-bottom: 30px;
+    left: 0 !important;
+    width: 100% !important;
+  }
+  .ytp-chrome-top > * {
+    margin-inline: 12px;
+  }
+  .ytp-gradient-top {
+    display: none;
+  }
+
+  /* Vertically align title and buttons */
+  .ytp-chrome-top {
+    align-items: center;
+  }
+  /* Vertically align title and buttons */
+  .ytp-chrome-top > * {
+    /* Substitute for button padding-top: 6px + button height was: 36px, changed to: 24px, (36-24px)/2 = 6px */
+    margin-top: 12px;
+  }
+  .ytp-big-mode .ytp-chrome-top > * {
+    /* Substitute for .ytp-big-mode .ytp-title-text padding-top: 18px */
+    margin-top: 18px;
+  }
+  /* Remove empty space above-below icons, height similar to .ytp-title-text */
+  .ytp-chrome-top-buttons {
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+  .ytp-chrome-top .ytp-button {
+    padding-top: unset;
+  }
+
+  /* Video title text shadow for legibility on light background */
+  .ytp-title,
+  .ytp-title-text {
+    overflow: visible;
+  }
+  .ytp-title-text.ytp-title-text {
+    /* Override .ytp-big-mode .ytp-title-text with precendence */
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    padding: 0px 10px;
+    display: inline-block;
+  }
+  .ytp-title-link {
+    display: inline;
+  }
+  /* Buttons also have shadow */
+  .ytp-chrome-top-buttons .ytp-button {
+    filter: drop-shadow(1px 1px 2px #000a);
+  }
+  /* Video title and buttons highlighted with background and shadow */
+  /* .ytp-chrome-top-buttons, */
+  .ytp-title-text {
+    --bgcolor: rgb(0 0 0 / 20%);
+    --size--blur: 15px;
+    box-shadow: 0 0 var(--size--blur) var(--size--blur) var(--bgcolor);
+    background-color: var(--bgcolor);
+    border-radius: var(--size--blur);
+  }
+  /* Watch later button's positioning was inconsistent with other buttons */
+  .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-watch-later-button {
+    min-width: unset;
+  }
+
+  /* Video title and buttons fade in-out */
+  .ytp-chrome-top {
+    /* transition: opacity 0.1s; */
+    /* transition: opacity .1s cubic-bezier(.4,0,1,1); */ /* original */
+    /* transition-timing-function: ease; */
+    /* transition-timing-function: ease-in-out; */
+  }
+  /* Delay fade-in for a few seconds after paused, so a short pause won't create distraction. No delay when hovered. */
+  .paused-mode .ytp-chrome-top:not(:hover) {
+    transition-delay: 1s;
+    transition-duration: 0.5s;
+  }
+  /* Short transition when hovered */
+  #movie_player.ytp-chrome-top:hover {
+    transition-delay: 0s;
+    /* transition-duration: 0.1s; */
+  }
+
+  /* Hide video title and buttons when playing and not hovered or focused */
+  /* [full-bleed-player] === :is([theater], [fullscreen]) */
+  .ytd-page-manager[full-bleed-player] .playing-mode:not(.unstarted-mode) .ytp-chrome-top:not(:hover):not(:focus-within) {
+    opacity: 0;
+    /* No fade-out delay when hiding */
+    transition-delay: 0s;
+  }
+  /* Show video title and buttons when search is focused */
+  #masthead-container:is(:hover, :focus-within) ~ #page-manager .ytp-chrome-top {
+    opacity: 1;
+  }
+
+  /* Disable hiding of player top buttons and disable fade-out on inactivity */
+  /* .ytp-autohide: playing and mouse didn't move for 3 seconds) */
+  #movie_player {
+    .ytp-title-channel,
+    .ytp-title,
+    .ytp-chrome-top .ytp-button {
+      opacity: unset;
+      -webkit-transition: unset;
+      transition: unset;
+    }
+  }
+
+  /* Show title in theater mode: disable .ytp-hide-info-bar (active when not fullscreen) */
+  /* and .ytp-autohide (active when paused or for 3 seconds after mouse activity). */
+  /* Note: .ytp-autohide-active is added (increases precedence) for < 1s while fading out. */
+  .ytp-cards-button,
+  .ytp-playlist-menu-button,
+  .ytp-back-button,
+  /* .ytp-title-channel, */
+  .ytp-title {
+    /* #movie_player for precedence */
+    .ytd-page-manager[full-bleed-player] #movie_player & {
+      display: unset;
+    }
+  }
+  /* Buttons will be visible in default and theater modes too */
+  .ytp-watch-later-button,
+  /* .ytp-cards-button:not([title=null]), */
+  .ytp-copylink-button-visible,
+  .ytp-overflow-button-visible {
+    /* Hidden with style attribute at the end of the video, therefore the !important */
+    display: unset !important;
+  }
+
+  /* Hide share and search button (visible on fullscreen). Search button seems to be unused. */
+  .ytp-search-button,
+  .ytp-share-button-visible {
+    display: none !important;
+  }
+
+  /* Disable hiding of video title and buttons in default and theater mode */
+  .ytp-hide-info-bar .ytp-chrome-top {
+    /* Disable .ytp-hide-info-bar (active when not fullscreen) */
+    height: unset;
+  }
+
 }
