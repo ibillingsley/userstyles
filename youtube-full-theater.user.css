@@ -20,12 +20,6 @@
     margin: unset;
   }
 
-  /* Margin between player and description, comments */
-  .ytd-page-manager[full-bleed-player] #columns#columns,
-  .ytd-page-manager[default-layout] #below {
-    margin-top: var(--ytd-margin-3x);
-  }
-
 
   /* Top bar hiding with fade-out and visibility */
   #masthead[fullscreen],
@@ -80,6 +74,74 @@
   }
 
 
+  /** Top bar responsive CSS **/
+
+  /* Header */
+  #masthead #background {
+    height: 100%;
+  }
+  /* Logo */
+  ytd-logo.ytd-topbar-logo-renderer {
+    display: block;
+  }
+  yt-icon.ytd-logo {
+    padding-block: 0;
+    height: 100%;
+  }
+  #country-code.ytd-topbar-logo-renderer {
+    margin-top: -6px;
+  }
+  #skip-navigation.ytd-masthead:focus-within {
+    top: calc( 50% - 18px );
+  }
+  /* Search */
+  #center.ytd-masthead {
+    height: 40px;
+  }
+  ytd-searchbox.ytd-masthead,
+  #search-form.ytd-searchbox,
+  #voice-search-button {
+    height: 100%;
+  }
+  /* Magnifying glass icon */
+  #search-icon-legacy.ytd-searchbox {
+    height: 100%;
+    width: unset;
+    aspect-ratio: 64 / 40;
+  }
+  /* Mic button */
+  ytd-button-renderer.ytd-masthead,
+  ytd-button-renderer.ytd-masthead > yt-button-shape {
+    height: 100%;
+  }
+  .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text {
+    height: 100%;
+    width: unset;
+    aspect-ratio: 1;
+  }
+  /* Top bar is thinner in theater and fullscreen mode */
+  #masthead:is( [theater], [fullscreen] ) {
+    /* Header */
+    #container.ytd-masthead {
+      height: 40px;
+    }
+    /* Search */
+    #center.ytd-masthead {
+      height: 30px;
+    }
+  }
+  /* Search suggestions popup was off-screen */
+  .gstl_50.sbdd_a {
+    /* Fix miscalculated position when scrolled down */
+    top: 52px !important;
+
+    /* Theater mode has thinner searchbox */
+    body:has( #masthead:is( [theater], [fullscreen] ) ) & {
+      top: 36px !important;
+    }
+  }
+
+
   /* Replace player top margin with #masthead-container */
   #masthead-container.ytd-app {
     /* Occupy the necessary space for #masthead in default mode */
@@ -107,12 +169,6 @@
     top: calc(50% + 50px);
   }
 
-
-  /* Search suggestions popup was off-screen */
-  .gstl_50.sbdd_a {
-    /* Fix miscalculated position when scrolled down */
-    top: 52px !important;
-  }
 
 
   /** Show video title and buttons in theater mode, hide when playing video - also in fullscreen **/
