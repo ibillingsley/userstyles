@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           YouTube Full Theater
 @namespace      github.com/ibillingsley
-@version        1.0.6
+@version        1.1.0
 @description    Full screen theatre mode for YouTube
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -9,28 +9,250 @@
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.youtube.com/watch") {
-  /* Full height player */
-  ytd-watch-flexy[theater] #player-wide-container,
-  ytd-watch-flexy[theater] #player-theater-container,
-  ytd-watch-flexy[theater] #full-bleed-container {
-    max-height: 100vh !important;
-    min-height: 100vh !important;
+
+  /* Player occupies full screen height */
+  .ytd-page-manager[theater]:not([fullscreen]) #player-wide-container,
+  .ytd-page-manager[theater]:not([fullscreen]) #player-theater-container,
+  .ytd-page-manager[theater]:not([fullscreen]) #full-bleed-container {
+    max-height: 100vh;
+    min-height: 100vh;
   }
-  /* Hide top bar */
+
+
+  /* Top bar hiding with fade-out and visibility */
+  #masthead[fullscreen],
   #masthead[theater] {
-    height: 0 !important;
-    opacity: 0 !important;
-    transition: opacity 0.1s ease-in-out !important;
+    --duration--fade-out: 0.7s;
+    /* Fade in-out and enable/disable visibility (clickable). */
+    transition:
+      opacity var(--duration--fade-out) ease-out,
+      visibility var(--duration--fade-out);
   }
-  /* Show on hover */
-  #masthead[theater]:hover {
-    opacity: 1 !important;
+
+  /* Theater mode top bar is hidden by default */
+  #masthead[theater]:not([fullscreen]) {
+    opacity: 0;
+  }
+  /* Show top bar on hover and when search is focused */
+  #masthead[theater]:not([fullscreen]):is(:focus-within, :hover) {
+    opacity: 1;
+    /* Fade in faster */
+    transition-duration: 0.1s, 0.1s;
+  }
+
+  /* Fullscreen top bar is hidden when scrolled to top and not focused */
+  ytd-app[masthead-hidden] #masthead[fullscreen]:not(:focus-within) {
+    /* Fade out */
+    opacity: 0;
+    /* Make top bar unclickable. Delayed until after fade out is finished. */
+    visibility: hidden;
+  }
+  /* Fullscreen top bar fades out instead of sliding off-screen */
+  ytd-app[masthead-hidden] #masthead-container.ytd-app {
+    /* Disable sliding off-screen */
+    transform: unset;
+    opacity: unset;
+    transition: unset;
+  }
+
+  /* Top bar background */
+  #masthead #background {
+    /* Smooth out weird transparency jump when scrolled to top */
+    transition: opacity 0.7s ease-out;
+    /* Blur the top bar's bottom edge */
+    box-shadow: 0px -6px 8px 8px var(--yt-spec-base-background);
+  }
+  /* Add a little transparency to the top bar background when visible */
+  #masthead #background:not([style="opacity: 0;"]) {
+    opacity: 90% !important;
+  }
+  /* Add transparency to the searchbox background when not focused */
+  #container.ytd-searchbox:not(:focus-within) {
+    opacity: 50%;
+  }
+
+
+  /* Replace player top margin with #masthead-container */
+  #masthead-container.ytd-app {
+    /* Occupy the necessary space for #masthead in basic mode */
+    position: sticky;
+  }
+  /* Collapse #masthead-container in fullscreen and theater mode: there's no space above player */
+  #masthead[fullscreen],
+  #masthead[theater] {
+    position: fixed;
   }
   /* Remove top margin */
-  #masthead-container {
-    position: sticky !important;
+  #page-manager.ytd-app {
+    margin-top: 0;
   }
-  #page-manager {
-    margin-top: 0 !important;
+
+
+  /* Move buttons in top-right corner below the top bar in theater mode */
+  .ytd-page-manager[theater]:not([fullscreen]) .ytp-overflow-panel-close,
+  .ytd-page-manager[theater]:not([fullscreen]) .ytp-chrome-top {
+    padding-top: 56px; /* masthead is 56px, buttons' 6px padding was removed */
+    height: unset;
   }
+  /* Move endscreen video grid below the title */
+  .ytd-page-manager[theater]:not([fullscreen]) .ytp-endscreen-content {
+    top: calc(50% + 50px);
+  }
+
+
+  /* Search suggestions popup was off-screen */
+  .gstl_50.sbdd_a {
+    /* Fix miscalculated position when scrolled down */
+    top: 52px !important;
+  }
+
+
+  /** Show video title and buttons in theater mode, hide when playing video - also in fullscreen **/
+
+  /* Video title gradient shadow is only as high as the title instead of darkening the top 1/3 of the video */
+  .ytp-chrome-top {
+    /* background-image: linear-gradient(to top, rgb(0 0 0 / 0%), rgb(0 0 0 / 40%) 40px, rgb(0 0 0 / 70%) 100%); */
+    /* background-image: linear-gradient(to top, rgb(0 0 0 / 0%), rgb(0 0 0 / 25%) 40px, rgb(0 0 0 / 50%) 100%); */
+    padding-bottom: 30px;
+    left: 0 !important;
+    width: 100% !important;
+  }
+  .ytp-chrome-top > * {
+    margin-inline: 12px;
+  }
+  .ytp-gradient-top {
+    display: none;
+  }
+
+  /* Vertically align title and buttons */
+  .ytp-chrome-top {
+    align-items: center;
+  }
+  /* Vertically align title and buttons */
+  .ytp-chrome-top > * {
+    /* Substitute for button padding-top: 6px + button height was: 36px, changed to: 24px, (36-24px)/2 = 6px */
+    margin-top: 12px;
+  }
+  .ytp-big-mode .ytp-chrome-top > * {
+    /* Substitute for .ytp-big-mode .ytp-title-text padding-top: 18px */
+    margin-top: 18px;
+  }
+  /* Remove empty space above-below icons, height similar to .ytp-title-text */
+  .ytp-chrome-top-buttons {
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+  .ytp-chrome-top .ytp-button {
+    padding-top: unset;
+  }
+
+  /* Video title text shadow for legibility on light background */
+  .ytp-title,
+  .ytp-title-text {
+    overflow: visible;
+  }
+  .ytp-title-text.ytp-title-text {
+    /* Override .ytp-big-mode .ytp-title-text with precendence */
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    padding: 0px 10px;
+    display: inline-block;
+  }
+  .ytp-title-link {
+    display: inline;
+  }
+  /* Buttons also have shadow */
+  .ytp-chrome-top-buttons .ytp-button {
+    filter: drop-shadow(1px 1px 2px #000a);
+  }
+  /* Video title and buttons highlighted with background and shadow */
+  /* .ytp-chrome-top-buttons, */
+  .ytp-title-text {
+    --bgcolor: rgb(0 0 0 / 20%);
+    --size--blur: 15px;
+    box-shadow: 0 0 var(--size--blur) var(--size--blur) var(--bgcolor);
+    background-color: var(--bgcolor);
+    border-radius: var(--size--blur);
+  }
+  /* Watch later button's positioning was inconsistent with other buttons */
+  .html5-video-player:not(.ytp-big-mode) .ytp-chrome-top .ytp-watch-later-button {
+    min-width: unset;
+  }
+
+  /* Video title and buttons fade in-out */
+  .ytp-chrome-top {
+    /* transition: opacity 0.1s; */
+    /* transition: opacity .1s cubic-bezier(.4,0,1,1); */ /* original */
+    /* transition-timing-function: ease; */
+    /* transition-timing-function: ease-in-out; */
+  }
+  /* Short transition when hovered */
+  .ytp-chrome-top:hover {
+    /* transition-duration: 0.1s; */
+  }
+  /* Delay fade-in for a few seconds after paused, so a short pause won't create distraction. No delay when hovered. */
+  .paused-mode .ytp-chrome-top:not(:hover) {
+    transition-delay: 1s;
+    transition-duration: 0.5s;
+  }
+
+  /* Hide video title and buttons when playing and not hovered or focused */
+  .ytd-page-manager:is([theater], [fullscreen]) .playing-mode:not(.unstarted-mode) .ytp-chrome-top:not(:hover):not(:focus-within) {
+    opacity: 0;
+    /* No fade-out delay when hiding */
+    transition-delay: 0s;
+  }
+  /* Show video title and buttons when search is focused */
+  #masthead-container:is(:hover, :focus-within) ~ #page-manager .ytp-chrome-top {
+    opacity: 1;
+  }
+
+  /* Disable hiding of player top buttons and disable fade-out on inactivity */
+
+  /* Disable .ytp-autohide (active when paused or mouse is moving and for 3 seconds after) */
+  #movie_player {
+    .ytp-title-channel,
+    .ytp-title,
+    .ytp-button {
+      opacity: unset;
+      -webkit-transition: unset;
+      transition: unset;
+    }
+  }
+
+  /* Show title in theater mode: disable .ytp-hide-info-bar (active when not fullscreen) */
+  /* and .ytp-autohide (active when paused or for 3 seconds after mouse activity). */
+  /* Note: .ytp-autohide-active is added (increases precedence) for < 1s while fading out. */
+  .ytp-cards-button,
+  .ytp-playlist-menu-button,
+  .ytp-back-button,
+  .ytp-title-channel,
+  .ytp-title {
+    /* #movie_player for precedence */
+    .ytd-page-manager:is([theater], [fullscreen]) #movie_player & {
+      display: unset;
+    }
+  }
+  /* Buttons will be visible in basic and theater modes too */
+  .ytp-watch-later-button,
+  /* .ytp-cards-button:not([title=null]), */
+  .ytp-copylink-button-visible,
+  .ytp-overflow-button-visible {
+    /* Hidden with style attribute at the end of the video, therefore the !important */
+    display: unset !important;
+  }
+
+  /* Hide share and search button (visible on fullscreen). Search button seems to be unused. */
+  .ytp-search-button,
+  .ytp-share-button-visible {
+    display: none !important;
+  }
+
+  /* Disable hiding of video title and buttons in basic and theater mode */
+  .ytp-hide-info-bar .ytp-chrome-top {
+    /* Disable .ytp-hide-info-bar (active when not fullscreen) */
+    height: unset;
+  }
+
 }
