@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.2.0
+@version        1.2.1
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -333,5 +333,15 @@
   .infobar {
     background-color: #282828 !important;
     border: none;
+  }
+}
+
+@-moz-document domain("redditmedia.com") {
+  body {
+    background: black;
+  }
+  body > iframe {
+    width: 100vw;
+    height: 100vh;
   }
 }
