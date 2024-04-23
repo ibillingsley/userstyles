@@ -34,11 +34,18 @@
   #masthead[theater]:not([fullscreen]) {
     opacity: 0;
   }
-  /* Show top bar on hover and when search is focused */
-  #masthead[theater]:not([fullscreen]):is(:focus-within, :hover) {
-    opacity: 1;
-    /* Fade in faster */
-    transition-duration: 0.1s, 0.1s;
+  /* Show top bar when dropdown is open */
+  ytd-app:has( ytd-popup-container tp-yt-iron-dropdown:not([style~="display:"]) ),
+  /* Show top bar when title is hovered or focused */
+  #content:has( .ytp-chrome-top:is(:hover, :focus-within) ),
+  /* Show top bar when hovered or focused */
+  #masthead-container:is(:hover, :focus-within) {
+  /* #masthead[theater]:not([fullscreen]):is(:focus-within, :hover) { */
+    #masthead[theater]:not([fullscreen]) {
+      opacity: 1;
+      /* Fade in faster */
+      transition-duration: 0.1s, 0.1s;
+    }
   }
 
   /* Fullscreen top bar is hidden when scrolled to top and not focused */
