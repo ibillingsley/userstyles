@@ -11,11 +11,19 @@
 @-moz-document url-prefix("https://www.youtube.com/watch") {
 
   /* Player occupies full screen height */
+  #player.skeleton.theater,
   .ytd-page-manager[theater]:not([fullscreen]) #player-wide-container,
   .ytd-page-manager[theater]:not([fullscreen]) #player-theater-container,
   .ytd-page-manager[theater]:not([fullscreen]) #full-bleed-container {
     max-height: 100vh;
     min-height: 100vh;
+    margin: unset;
+  }
+
+  /* Margin between player and description, comments */
+  .ytd-page-manager[full-bleed-player] #columns#columns,
+  .ytd-page-manager[default-layout] #below {
+    margin-top: var(--ytd-margin-3x);
   }
 
 
