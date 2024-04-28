@@ -23,11 +23,15 @@
   /* Top bar hiding with fade-out and visibility */
   #masthead[fullscreen],
   #masthead[theater] {
-    --duration--fade-out: 0.7s;
+    --fadeout-duration: 700ms;
+    --fadeout-delay: 500ms;
     /* Fade in-out and enable/disable visibility (clickable). */
     transition:
-      opacity var(--duration--fade-out) ease-out,
-      visibility var(--duration--fade-out);
+      opacity var(--fadeout-duration) ease-out,
+      visibility var(--fadeout-duration);
+    transition-delay:
+      var(--fadeout-delay),
+      var(--fadeout-delay);
   }
 
   /* Theater mode top bar is hidden by default */
@@ -44,7 +48,8 @@
     #masthead[theater]:not([fullscreen]) {
       opacity: 1;
       /* Fade in faster */
-      transition-duration: 0.1s, 0.1s;
+      transition-duration: 100ms, 100ms;
+      transition-delay: 0s, 0s;
     }
   }
 
@@ -66,7 +71,7 @@
   /* Top bar background */
   #masthead #background {
     /* Smooth out weird transparency jump when scrolled to top */
-    transition: opacity 0.7s ease-out;
+    transition: opacity 700ms ease-out;
     /* Blur the top bar's bottom edge */
     box-shadow: 0px -6px 8px 8px var(--yt-spec-base-background);
   }
@@ -256,20 +261,20 @@
 
   /* Video title and buttons fade in-out */
   .ytp-chrome-top {
-    /* transition: opacity 0.1s; */
-    /* transition: opacity .1s cubic-bezier(.4,0,1,1); */ /* original */
+    /* transition: opacity 100ms; */
+    /* transition: opacity 100ms cubic-bezier(.4,0,1,1); */ /* original */
     /* transition-timing-function: ease; */
     /* transition-timing-function: ease-in-out; */
   }
   /* Delay fade-in for a few seconds after paused, so a short pause won't create distraction. No delay when hovered. */
   .paused-mode .ytp-chrome-top:not(:hover) {
     transition-delay: 1s;
-    transition-duration: 0.5s;
+    transition-duration: 500ms;
   }
   /* Short transition when hovered */
   #movie_player.ytp-chrome-top:hover {
     transition-delay: 0s;
-    /* transition-duration: 0.1s; */
+    /* transition-duration: 100ms; */
   }
 
   /* Hide video title and buttons when playing and not hovered or focused */
