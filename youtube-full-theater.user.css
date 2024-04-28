@@ -10,6 +10,39 @@
 
 @-moz-document url-prefix("https://www.youtube.com/watch") {
 
+  html, [light] {
+    /* Add transparency to top bar, sidebar (#contentContainer.tp-yt-app-drawer) background */
+    --yt-spec-base-background: #fffc;
+    /* Add transparency to menu background */
+    --yt-spec-menu-background: var(--yt-spec-base-background);
+    /* Add transparency to search results background */
+    --yt-spec-raised-background: var(--yt-spec-base-background);
+    --ytd-searchbox-background: hsl( 0 0 100% / 50% );
+  }
+
+  html[dark], [dark] {
+    /* Add transparency to top bar, sidebar (#contentContainer.tp-yt-app-drawer) background */
+    --yt-spec-base-background: #0f0f0fcc;
+    /* Add transparency to menu background */
+    --yt-spec-menu-background: #282828cc;
+    --yt-spec-menu-background: var(--yt-spec-base-background);
+    /* Add transparency to search results background */
+    --yt-spec-raised-background: #212121cc;
+    --yt-spec-raised-background: var(--yt-spec-base-background);
+    --ytd-searchbox-background: hsl( 0 0 7% / 50% );
+  }
+
+  #guide-content.ytd-app,
+  ytd-simple-menu-header-renderer {
+    background: unset;
+  }
+
+  /* Overlay when sidebar is open */
+  #scrim.tp-yt-app-drawer {
+    /* Fade video less */
+    --app-drawer-scrim-background: rgb(0 0 0 / 20%);
+  }
+
   /* Player occupies full screen height */
   #player.skeleton.theater,
   .ytd-page-manager[theater]:not([fullscreen]) #player-wide-container,
@@ -75,13 +108,13 @@
     /* Blur the top bar's bottom edge */
     box-shadow: 0px -6px 8px 8px var(--yt-spec-base-background);
   }
-  /* Add a little transparency to the top bar background when visible */
-  #masthead #background:not([style="opacity: 0;"]) {
-    opacity: 50% !important;
-  }
-  /* Add transparency to the searchbox background when not focused */
+  /* Add transparency to the searchbox when not focused */
   #container.ytd-searchbox:not(:focus-within) {
-    opacity: 30%;
+    opacity: 80%;
+  }
+  /* Hide empty iframe showing a scrollbar when search is focused */
+  body:has( #container.ytd-searchbox:focus-within ) iframe.sbdd_c {
+    display: none;
   }
 
 
