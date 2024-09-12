@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Discord Bigger Inbox
 @namespace      github.com/ibillingsley
-@version        1.3.0
+@version        1.3.2
 @description    Maximize inbox popup on Discord
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -15,7 +15,7 @@
     top: 48px;
     right: 0;
     bottom: 0;
-    left: 312px;
+    left: 313px;
     width: auto !important;
     height: auto !important;
     max-width: none !important;
@@ -26,19 +26,16 @@
   div[class*="recentMentionsPopout"] > div:first-child {
     display: flex;
     align-items: center;
-    padding: 2px 16px;
+    padding: 0 16px;
   }
-  div[class*="recentMentionsPopout"] > div:first-child > div {
+  div[class*="recentMentionsPopout"] > div:first-child > div:nth-child(2) {
     display: contents;
   }
-  div[class*="recentMentionsPopout"] > div:first-child > div:last-child > div:first-child {
-    margin-left: 16px;
-    padding-left: 16px;
-    flex-grow: 999999;
-  }
   div[class*="recentMentionsPopout"] > div:first-child > div:nth-child(2) > div:last-child {
-    min-width: 32px;
-    margin-left: 12px;
     order: 1;
+  }
+  div[class*="recentMentionsPopout"] > div:first-child > div:last-child {
+    margin: 4px 24px 0;
+    flex-grow: 999999;
   }
 }
