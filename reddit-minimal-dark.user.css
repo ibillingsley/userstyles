@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.2.2
+@version        1.2.3
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -100,17 +100,18 @@
     border-color: #333 !important;
     color: #777;
   }
-  .listing-chooser-collapsed .grippy {
-    width: 1px !important;
-  }
-  .listing-chooser-collapsed .listing-chooser {
-    padding-right: 1px !important;
-  }
   .listing-chooser li.selected {
+    background-color: #262626 !important;
     box-shadow: none !important;
   }
-  .grippy:after {
-    display: none !important;
+  .listing-chooser .grippy:after {
+    background-color: transparent !important;
+    border: none !important;
+  }
+  .listing-chooser .grippy:not(:hover):before,
+  .listing-chooser-collapsed .listing-chooser .grippy:not(:hover),
+  .listing-chooser-collapsed .listing-chooser .contents {
+    opacity: 0 !important;
   }
   /* Footer */
   .footer,
