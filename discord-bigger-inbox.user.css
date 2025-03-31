@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Discord Bigger Inbox
 @namespace      github.com/ibillingsley
-@version        1.4.0
+@version        1.4.2
 @description    Maximize inbox popup on Discord
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -12,29 +12,30 @@
   /* Resize and position popup */
   .recentMentionsPopout__95796 {
     position: fixed;
-    top: 37px;
+    top: var(--custom-app-top-bar-height, 36px);
     right: 0;
     bottom: 0;
-    left: calc(var(--custom-guild-sidebar-width, 310px) + 3px);
+    left: var(--custom-guild-sidebar-width, 310px);
     width: auto !important;
     height: auto !important;
     max-width: none !important;
     max-height: none !important;
+    margin: 1px 0 0 2px;
     border-radius: 0;
   }
   /* Single-row toolbar */
-  .recentMentionsPopout__95796 > div:first-child {
+  .recentMentionsPopout__95796 .header_ab6641 {
     display: flex;
     align-items: center;
     padding: 0 16px;
   }
-  .recentMentionsPopout__95796 > div:first-child > div:nth-child(2) {
+  .recentMentionsPopout__95796 .headerTitle_ab6641 {
     display: contents;
   }
-  .recentMentionsPopout__95796 > div:first-child > div:nth-child(2) > div:last-child {
+  .recentMentionsPopout__95796 .headerTitle_ab6641 .controls_ab6641 {
     order: 1;
   }
-  .recentMentionsPopout__95796 > div:first-child > div:last-child {
+  .recentMentionsPopout__95796 .headerTabs_ab6641 {
     margin: 1px 24px 0;
     flex-grow: 999999;
   }
