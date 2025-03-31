@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.2.3
+@version        1.3.0
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -25,11 +25,22 @@
     }
   EOT;
 }
+@advanced dropdown mr-side-bar "Multireddits side bar" {
+  show "Show" <<<EOT
+  EOT;
+  hide "Hide" <<<EOT
+    body > .listing-chooser {
+        display: none !important;
+    }
+    body > .content,
+    .footer-parent {
+        margin-left: 5px !important;
+    }
+  EOT;
+}
 ==/UserStyle== */
 
 @-moz-document domain("reddit.com") {
-  /* Hide subreddits top bar */
-  /*[[sr-top-bar]]*/
   /* Hide ads & annoyances */
   #redesign-beta-optin-btn,
   .redesign-beta-optin,
@@ -39,6 +50,8 @@
   .premium-banner,
   .promotedlink,
   .promoted-tag,
+  .listingsignupbar,
+  .onboardingbar,
   .embed-comment,
   .nub {
     display: none !important;
@@ -79,6 +92,7 @@
   }
   #header-img,
   #mail,
+  #chat-v2,
   .sidebox.create .spacer a,
   .users-online:before {
     filter: invert(80%) hue-rotate(180deg) !important;
@@ -91,6 +105,8 @@
     background-color: #2a2a2a !important;
     color: #999 !important;
   }
+  /* Hide subreddits top bar */
+  /*[[sr-top-bar]]*/
   /* Side bar */
   .side,
   .side *,
@@ -113,6 +129,8 @@
   .listing-chooser-collapsed .listing-chooser .contents {
     opacity: 0 !important;
   }
+  /* Hide multireddits side bar */
+  /*[[mr-side-bar]]*/
   /* Footer */
   .footer,
   .footer * {
