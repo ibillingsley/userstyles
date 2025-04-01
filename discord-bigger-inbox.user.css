@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Discord Bigger Inbox
 @namespace      github.com/ibillingsley
-@version        1.4.2
+@version        1.4.3
 @description    Maximize inbox popup on Discord
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -10,7 +10,7 @@
 
 @-moz-document domain("discord.com") {
   /* Resize and position popup */
-  .recentMentionsPopout__95796 {
+  :root .recentMentionsPopout__95796 {
     position: fixed;
     top: var(--custom-app-top-bar-height, 36px);
     right: 0;
