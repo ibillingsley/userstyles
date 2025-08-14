@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.3.3
+@version        1.3.4
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -98,10 +98,6 @@
   .users-online:before,
   .c-close {
     filter: invert(80%) hue-rotate(180deg) !important;
-  }
-  #notifications,
-  #chat-v2 {
-    background-size: auto;
   }
   .tabmenu a {
     background-color: transparent !important;
