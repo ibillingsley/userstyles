@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.3.5
+@version        1.4.0
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -41,6 +41,40 @@
 ==/UserStyle== */
 
 @-moz-document domain("reddit.com") {
+  /* Colors */
+  :root {
+    --rmd-text: #888;
+    --rmd-text-light: #999;
+    --rmd-text-dark: #777;
+    --rmd-background: #222;
+    --rmd-background-light: #2a2a2a;
+    --rmd-background-dark: #181818;
+    --rmd-border: #333;
+    --rmd-link: #48b;
+    --rmd-link-visited: #369;
+    --rmd-link-hover: #5ad;
+    --rmd-title: #bbb;
+    --rmd-title-visited: #777;
+    --rmd-title-hover: #ccc;
+    --rmd-post-actions: #888;
+    --rmd-post-actions-visited: #666;
+    --rmd-post-actions-hover: #bbb;
+    --rmd-button-text-light: #fff;
+    --rmd-button-background: #333;
+    --rmd-button-border: #555;
+    --rmd-code-background: #000;
+    --rmd-flair: #888;
+    --rmd-flair-border: #444;
+    --rmd-upvote: #b3684d;
+    --rmd-downvote: #7070c2;
+    --rmd-friend: #c83;
+    --rmd-submitter: #3ab;
+    --rmd-mod: #3a3;
+    --rmd-admin: #c44;
+    --rmd-nsfw: #c44;
+    --rmd-nsfw-border: #822;
+    --rmd-gold: #542;
+  }
   /* Hide ads & annoyances */
   #redesign-beta-optin-btn,
   .redesign-beta-optin,
@@ -59,25 +93,25 @@
   /* Reset */
   * {
     background-color: transparent;
-    border-color: #333;
-    color: #888;
+    border-color: var(--rmd-border);
+    color: var(--rmd-text);
   }
   html,
   body {
     color-scheme: dark;
-    background-color: #222 !important;
+    background-color: var(--rmd-background) !important;
   }
   a,
   a * {
-    color: #48b !important;
+    color: var(--rmd-link) !important;
   }
   a:visited,
   a:visited * {
-    color: #369 !important;
+    color: var(--rmd-link-visited) !important;
   }
   a:hover,
   a:hover * {
-    color: #5ad !important;
+    color: var(--rmd-link-hover) !important;
   }
   /* Top bar */
   #header * {
@@ -86,7 +120,7 @@
   }
   #header,
   #sr-more-link {
-    background-color: #222 !important;
+    background-color: var(--rmd-background) !important;
     background-blend-mode: soft-light;
     border: none;
   }
@@ -102,11 +136,11 @@
   }
   .tabmenu a {
     background-color: transparent !important;
-    border-color: #333 !important;
+    border-color: var(--rmd-border) !important;
   }
   .tabmenu .selected a {
-    background-color: #2a2a2a !important;
-    color: #999 !important;
+    background-color: var(--rmd-background-light) !important;
+    color: var(--rmd-text-light) !important;
   }
   /* Hide subreddits top bar */
   /*[[sr-top-bar]]*/
@@ -116,11 +150,11 @@
   .listing-chooser,
   .listing-chooser * {
     background-color: transparent !important;
-    border-color: #333 !important;
-    color: #777;
+    border-color: var(--rmd-border) !important;
+    color: var(--rmd-text-dark);
   }
   .listing-chooser li.selected {
-    background-color: #262626 !important;
+    background-color: var(--rmd-background-light) !important;
     box-shadow: none !important;
   }
   .listing-chooser .grippy:after {
@@ -137,13 +171,13 @@
   /* Footer */
   .footer,
   .footer * {
-    border-color: #333 !important;
+    border-color: var(--rmd-border) !important;
   }
   /* Chat */
   .chat-app-window,
   #chat-app-minimized {
-    background: #333 !important;
-    border-color: #555 !important;
+    background: var(--rmd-button-background) !important;
+    border-color: var(--rmd-button-border) !important;
   }
   /* Inputs and buttons */
   input,
@@ -155,9 +189,9 @@
   .fancy-toggle-button a,
   .usertext button,
   .image-upload-drop-target {
-    background: #333 !important;
-    border-color: #555;
-    color: #999 !important;
+    background: var(--rmd-button-background) !important;
+    border-color: var(--rmd-button-border);
+    color: var(--rmd-text-light) !important;
     font-weight: normal !important;
   }
   button {
@@ -166,33 +200,33 @@
   .drop-choices,
   .hover-bubble,
   .modal-dialog {
-    background: #111 !important;
+    background: var(--rmd-background-dark) !important;
   }
   .dropdown .selected {
-    color: #888 !important;
+    color: var(--rmd-text) !important;
   }
   .drop-choices a:hover {
-    background: #333 !important;
+    background: var(--rmd-button-background) !important;
   }
   .hover-bubble:after {
     filter: invert(1);
   }
   .roundfield,
   .linefield {
-    background-color: #181818 !important;
+    background-color: var(--rmd-background-dark) !important;
   }
   .formtabs-content {
-    border-color: #2a2a2a;
+    border-color: var(--rmd-background-light);
   }
   /* Listing */
   .thing .title {
-    color: #bbb !important;
+    color: var(--rmd-title) !important;
   }
   .title:visited {
-    color: #777 !important;
+    color: var(--rmd-title-visited) !important;
   }
   .thing .title:hover {
-    color: #ccc !important;
+    color: var(--rmd-title-hover) !important;
   }
   .arrow {
     filter: brightness(45%);
@@ -203,13 +237,13 @@
   }
   .rank,
   .score {
-    color: #777 !important;
+    color: var(--rmd-text-dark) !important;
   }
   .link .score.likes {
-    color: #b3684d !important;
+    color: var(--rmd-upvote) !important;
   }
   .link .score.dislikes {
-    color: #7070c2 !important;
+    color: var(--rmd-downvote) !important;
   }
   .expando-button,
   .thumbnail:empty {
@@ -218,45 +252,47 @@
   }
   .friend,
   .friend:visited {
-    color: #c83 !important;
+    color: var(--rmd-friend) !important;
   }
   .submitter,
   .submitter:visited {
-    color: #3ab !important;
+    color: var(--rmd-submitter) !important;
   }
   .moderator,
   .moderator:visited,
   .green {
-    color: #3a3 !important;
+    color: var(--rmd-mod) !important;
   }
   .admin,
-  .admin:visited,
+  .admin:visited {
+    color: var(--rmd-admin) !important;
+  }
   .nsfw-stamp * {
-    color: #c44 !important;
+    color: var(--rmd-nsfw) !important;
   }
   .nsfw-stamp {
-    border-color: #822 !important;
+    border-color: var(--rmd-nsfw-border) !important;
   }
   .pagename a,
   .trophy-name {
-    color: #999 !important;
+    color: var(--rmd-text-light) !important;
   }
   .buttons li {
     padding: 0 !important;
   }
   .buttons a {
     margin-right: 8px !important;
-    color: #888 !important;
+    color: var(--rmd-post-actions) !important;
   }
   .buttons a:visited {
-    color: #666 !important;
+    color: var(--rmd-post-actions-visited) !important;
   }
   .buttons a:hover {
-    color: #bbb !important;
+    color: var(--rmd-post-actions-hover) !important;
   }
   .buttons a.c-btn,
   .expando-gate__controls {
-    color: #fff !important;
+    color: var(--rmd-button-text-light) !important;
   }
   .pagename,
   .tabmenu li,
@@ -273,7 +309,7 @@
   .last-clicked,
   .menuarea,
   .searchpane {
-    border-color: #333 !important;
+    border-color: var(--rmd-border) !important;
   }
   .searchpane,
   .reddit-infobar {
@@ -283,8 +319,8 @@
   .flairrichtext,
   .linkflairlabel {
     background-color: transparent !important;
-    border-color: #444;
-    color: #888;
+    border-color: var(--rmd-flair-border);
+    color: var(--rmd-flair);
     font-size: x-small;
   }
   .flairrichtext {
@@ -299,7 +335,7 @@
   .panestack-title,
   .child,
   .author-tooltip {
-    border-color: #333 !important;
+    border-color: var(--rmd-border) !important;
   }
   .author-tooltip__head,
   .pinnable-content.pinned,
@@ -310,42 +346,42 @@
   blockquote,
   pre,
   code {
-    background-color: #191919 !important;
+    background-color: var(--rmd-background-dark) !important;
     border: none !important;
   }
   .linklisting .link {
     background-color: transparent;
-    border-color: #333;
+    border-color: var(--rmd-border);
   }
   .link .usertext .md pre,
   .link .usertext .md code {
-    background-color: #000 !important;
+    background-color: var(--rmd-code-background) !important;
   }
   .gold-accent,
   .title-button.gold {
     background-color: transparent !important;
-    border-color: #542 !important;
+    border-color: var(--rmd-gold) !important;
   }
   .md,
   .usertext.grayed .usertext-body,
   .admin_takedown {
     background-color: transparent !important;
-    color: #888;
-    border-color: #333 !important;
+    color: var(--rmd-text);
+    border-color: var(--rmd-border) !important;
   }
   .md blockquote {
-    border-left: solid 4px #333 !important;
+    border-left: solid 4px var(--rmd-border) !important;
   }
   .md blockquote * {
-    color: #777;
+    color: var(--rmd-text-dark);
   }
   .md td,
   .md th {
-    border: solid 1px #333 !important;
+    border: solid 1px var(--rmd-border) !important;
   }
   hr {
     background-color: transparent !important;
-    border: solid #333 !important;
+    border: solid var(--rmd-border) !important;
     border-width: 0 0 1px 0 !important;
   }
   .comment .author,
@@ -360,7 +396,7 @@
   .message.new > .entry,
   .crosspost-preview,
   .infobar {
-    background-color: #282828 !important;
+    background-color: var(--rmd-background-light) !important;
     border: none;
   }
 }
