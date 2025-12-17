@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Discord Bigger Inbox
 @namespace      github.com/ibillingsley
-@version        1.4.5
+@version        1.4.6
 @description    Maximize inbox popup on Discord
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -10,7 +10,7 @@
 
 @-moz-document domain("discord.com") {
   /* Resize and position popup */
-  :root .recentMentionsPopout__95796 {
+  :root ._957962c2bd49881b-recentMentionsPopout {
     position: fixed;
     top: var(--custom-app-top-bar-height, 36px);
     right: 0;
@@ -24,29 +24,29 @@
     border-radius: 0;
   }
   /* Single-row toolbar */
-  .recentMentionsPopout__95796 .header_ab6641 {
+  ._957962c2bd49881b-recentMentionsPopout .ab66419eae73260f-header {
     display: flex;
     align-items: center;
     padding: 0 16px;
   }
-  .recentMentionsPopout__95796 .headerTitle_ab6641 {
+  ._957962c2bd49881b-recentMentionsPopout .ab66419eae73260f-headerTitle {
     display: contents;
   }
-  .recentMentionsPopout__95796 .headerTitle_ab6641 .controls_ab6641 {
+  ._957962c2bd49881b-recentMentionsPopout .ab66419eae73260f-headerTitle .ab66419eae73260f-controls {
     order: 1;
   }
-  .recentMentionsPopout__95796 .headerTabs_ab6641 {
+  ._957962c2bd49881b-recentMentionsPopout .ab66419eae73260f-headerTabs {
     margin: 1px 24px 0;
     flex-grow: 999999;
   }
-  .recentMentionsPopout__95796 .tabBar_ab6641 {
+  ._957962c2bd49881b-recentMentionsPopout .ab66419eae73260f-tabBar {
     margin-top: 0;
   }
-  .recentMentionsPopout__95796 .tab_ab6641 {
+  ._957962c2bd49881b-recentMentionsPopout .ab66419eae73260f-tab {
     padding-top: 16px;
   }
   /* Fix mentions */
-  .recentMentionsPopout__95796 .recentMentionsPopout__95796 {
+  ._957962c2bd49881b-recentMentionsPopout ._957962c2bd49881b-recentMentionsPopout {
     position: static !important;
     box-shadow: none;
   }
