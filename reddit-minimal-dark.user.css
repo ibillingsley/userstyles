@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.4.0
+@version        1.5.0
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -85,11 +85,14 @@
   .promotedlink,
   .promoted-tag,
   .listingsignupbar,
-  .onboardingbar,
-  .embed-comment,
-  .nub {
+  .onboardingbar {
     display: none !important;
   }
+  /* Apply to old reddit only */
+  html[xmlns] {
+    container-name: old-reddit;
+  }
+  @container old-reddit {
   /* Reset */
   * {
     background-color: transparent;
@@ -165,6 +168,9 @@
   .listing-chooser-collapsed .listing-chooser .grippy:not(:hover),
   .listing-chooser-collapsed .listing-chooser .contents {
     opacity: 0 !important;
+  }
+  .nub {
+    display: none !important;
   }
   /* Hide multireddits side bar */
   /*[[mr-side-bar]]*/
@@ -399,6 +405,10 @@
     background-color: var(--rmd-background-light) !important;
     border: none;
   }
+  .embed-comment {
+    display: none !important;
+  }
+  } /* end @container old-reddit */
 }
 
 @-moz-document domain("redditmedia.com") {
