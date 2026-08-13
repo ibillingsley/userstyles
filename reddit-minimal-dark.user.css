@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Reddit Minimal Dark
 @namespace      github.com/ibillingsley
-@version        1.5.0
+@version        1.5.1
 @description    Simple flat dark grey theme for old.reddit.com
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
@@ -89,10 +89,7 @@
     display: none !important;
   }
   /* Apply to old reddit only */
-  html[xmlns] {
-    container-name: old-reddit;
-  }
-  @container old-reddit {
+  @scope (html[xmlns]) {
   /* Reset */
   * {
     background-color: transparent;
@@ -408,7 +405,7 @@
   .embed-comment {
     display: none !important;
   }
-  } /* end @container old-reddit */
+  } /* end @scope */
 }
 
 @-moz-document domain("redditmedia.com") {
