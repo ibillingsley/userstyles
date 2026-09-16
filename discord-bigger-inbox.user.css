@@ -1,11 +1,15 @@
 /* ==UserStyle==
 @name           Discord Bigger Inbox
 @namespace      github.com/ibillingsley
-@version        1.5.0
+@version        1.5.1
 @description    Maximize inbox popup on Discord
 @author         Isaiah Billingsley
 @homepageURL    https://github.com/ibillingsley/userstyles
 @license        0BSD
+@advanced dropdown height "Height" {
+  auto "Auto" <<<EOT EOT;
+  full "Full" <<<EOT bottom: 0; EOT;
+}
 ==/UserStyle== */
 
 @-moz-document domain("discord.com") {
@@ -15,6 +19,7 @@
     top: var(--custom-app-top-bar-height, 36px);
     right: 0;
     left: var(--custom-guild-sidebar-width, 310px);
+    /*[[height]]*/
     width: auto !important;
     height: auto !important;
     min-width: 0 !important;
